@@ -1,0 +1,61 @@
+import json
+
+capitals = [
+    {"state": "Alabama", "capital": "Montgomery", "address": "600 Dexter Ave, Montgomery, AL 36104", "latitude": 32.377, "longitude": -86.300},
+    {"state": "Alaska", "capital": "Juneau", "address": "120 4th St, Juneau, AK 99801", "latitude": 58.301, "longitude": -134.419},
+    {"state": "Arizona", "capital": "Phoenix", "address": "1700 W Washington St, Phoenix, AZ 85007", "latitude": 33.448, "longitude": -112.074},
+    {"state": "Arkansas", "capital": "Little Rock", "address": "500 Woodlane St, Little Rock, AR 72201", "latitude": 34.746, "longitude": -92.289},
+    {"state": "California", "capital": "Sacramento", "address": "1315 10th St, Sacramento, CA 95814", "latitude": 38.577, "longitude": -121.493},
+    {"state": "Colorado", "capital": "Denver", "address": "200 E Colfax Ave, Denver, CO 80203", "latitude": 39.739, "longitude": -104.984},
+    {"state": "Connecticut", "capital": "Hartford", "address": "210 Capitol Ave, Hartford, CT 06106", "latitude": 41.764, "longitude": -72.682},
+    {"state": "Delaware", "capital": "Dover", "address": "411 Legislative Ave, Dover, DE 19901", "latitude": 39.158, "longitude": -75.519},
+    {"state": "Florida", "capital": "Tallahassee", "address": "400 S Monroe St, Tallahassee, FL 32399", "latitude": 30.438, "longitude": -84.281},
+    {"state": "Georgia", "capital": "Atlanta", "address": "206 Washington St SW, Atlanta, GA 30334", "latitude": 33.749, "longitude": -84.388},
+    {"state": "Hawaii", "capital": "Honolulu", "address": "415 S Beretania St, Honolulu, HI 96813", "latitude": 21.307, "longitude": -157.857},
+    {"state": "Idaho", "capital": "Boise", "address": "700 W Jefferson St, Boise, ID 83720", "latitude": 43.617, "longitude": -116.199},
+    {"state": "Illinois", "capital": "Springfield", "address": "401 S 2nd St, Springfield, IL 62701", "latitude": 39.799, "longitude": -89.651},
+    {"state": "Indiana", "capital": "Indianapolis", "address": "200 W Washington St, Indianapolis, IN 46204", "latitude": 39.768, "longitude": -86.158},
+    {"state": "Iowa", "capital": "Des Moines", "address": "1007 E Grand Ave, Des Moines, IA 50319", "latitude": 41.591, "longitude": -93.605},
+    {"state": "Kansas", "capital": "Topeka", "address": "300 SW 10th Ave, Topeka, KS 66612", "latitude": 39.048, "longitude": -95.678},
+    {"state": "Kentucky", "capital": "Frankfort", "address": "700 Capitol Ave, Frankfort, KY 40601", "latitude": 38.197, "longitude": -84.863},
+    {"state": "Louisiana", "capital": "Baton Rouge", "address": "900 N 3rd St, Baton Rouge, LA 70802", "latitude": 30.457, "longitude": -91.187},
+    {"state": "Maine", "capital": "Augusta", "address": "210 State St, Augusta, ME 04330", "latitude": 44.311, "longitude": -69.782},
+    {"state": "Maryland", "capital": "Annapolis", "address": "100 State Cir, Annapolis, MD 21401", "latitude": 38.979, "longitude": -76.491},
+    {"state": "Massachusetts", "capital": "Boston", "address": "24 Beacon St, Boston, MA 02133", "latitude": 42.358, "longitude": -71.063},
+    {"state": "Michigan", "capital": "Lansing", "address": "100 N Capitol Ave, Lansing, MI 48933", "latitude": 42.733, "longitude": -84.555},
+    {"state": "Minnesota", "capital": "St. Paul", "address": "75 Rev Dr Martin Luther King Jr Blvd, St Paul, MN 55155", "latitude": 44.955, "longitude": -93.102},
+    {"state": "Mississippi", "capital": "Jackson", "address": "400 High St, Jackson, MS 39201", "latitude": 32.299, "longitude": -90.180},
+    {"state": "Missouri", "capital": "Jefferson City", "address": "201 W Capitol Ave, Jefferson City, MO 65101", "latitude": 38.579, "longitude": -92.173},
+    {"state": "Montana", "capital": "Helena", "address": "1301 E 6th Ave, Helena, MT 59601", "latitude": 46.586, "longitude": -112.019},
+    {"state": "Nebraska", "capital": "Lincoln", "address": "1445 K St, Lincoln, NE 68508", "latitude": 40.808, "longitude": -96.699},
+    {"state": "Nevada", "capital": "Carson City", "address": "101 N Carson St, Carson City, NV 89701", "latitude": 39.164, "longitude": -119.767},
+    {"state": "New Hampshire", "capital": "Concord", "address": "107 N Main St, Concord, NH 03301", "latitude": 43.208, "longitude": -71.538},
+    {"state": "New Jersey", "capital": "Trenton", "address": "125 W State St, Trenton, NJ 08608", "latitude": 40.221, "longitude": -74.770},
+    {"state": "New Mexico", "capital": "Santa Fe", "address": "490 Old Santa Fe Trl, Santa Fe, NM 87501", "latitude": 35.686, "longitude": -105.938},
+    {"state": "New York", "capital": "Albany", "address": "State St and Washington Ave, Albany, NY 12224", "latitude": 42.652, "longitude": -73.757},
+    {"state": "North Carolina", "capital": "Raleigh", "address": "1 E Edenton St, Raleigh, NC 27601", "latitude": 35.780, "longitude": -78.639},
+    {"state": "North Dakota", "capital": "Bismarck", "address": "600 E Boulevard Ave, Bismarck, ND 58505", "latitude": 46.821, "longitude": -100.781},
+    {"state": "Ohio", "capital": "Columbus", "address": "1 Capitol Square, Columbus, OH 43215", "latitude": 39.961, "longitude": -82.998},
+    {"state": "Oklahoma", "capital": "Oklahoma City", "address": "2300 N Lincoln Blvd, Oklahoma City, OK 73105", "latitude": 35.492, "longitude": -97.503},
+    {"state": "Oregon", "capital": "Salem", "address": "900 Court St NE, Salem, OR 97301", "latitude": 44.939, "longitude": -123.030},
+    {"state": "Pennsylvania", "capital": "Harrisburg", "address": "501 N 3rd St, Harrisburg, PA 17120", "latitude": 40.265, "longitude": -76.884},
+    {"state": "Rhode Island", "capital": "Providence", "address": "82 Smith St, Providence, RI 02903", "latitude": 41.831, "longitude": -71.414},
+    {"state": "South Carolina", "capital": "Columbia", "address": "1100 Gervais St, Columbia, SC 29201", "latitude": 34.000, "longitude": -81.035},
+    {"state": "South Dakota", "capital": "Pierre", "address": "500 E Capitol Ave, Pierre, SD 57501", "latitude": 44.368, "longitude": -100.347},
+    {"state": "Tennessee", "capital": "Nashville", "address": "600 Charlotte Ave, Nashville, TN 37243", "latitude": 36.166, "longitude": -86.784},
+    {"state": "Texas", "capital": "Austin", "address": "1100 Congress Ave, Austin, TX 78701", "latitude": 30.274, "longitude": -97.740},
+    {"state": "Utah", "capital": "Salt Lake City", "address": "350 N State St, Salt Lake City, UT 84114", "latitude": 40.777, "longitude": -111.888},
+    {"state": "Vermont", "capital": "Montpelier", "address": "115 State St, Montpelier, VT 05633", "latitude": 44.260, "longitude": -72.575},
+    {"state": "Virginia", "capital": "Richmond", "address": "1000 Bank St, Richmond, VA 23218", "latitude": 37.539, "longitude": -77.433},
+    {"state": "Washington", "capital": "Olympia", "address": "416 Sid Snyder Ave SW, Olympia, WA 98504", "latitude": 47.035, "longitude": -122.905},
+    {"state": "West Virginia", "capital": "Charleston", "address": "1900 Kanawha Blvd E, Charleston, WV 25305", "latitude": 38.336, "longitude": -81.612},
+    {"state": "Wisconsin", "capital": "Madison", "address": "2 E Main St, Madison, WI 53703", "latitude": 43.075, "longitude": -89.384},
+    {"state": "Wyoming", "capital": "Cheyenne", "address": "200 W 24th St, Cheyenne, WY 82002", "latitude": 41.140, "longitude": -104.820},
+    {"state": "District of Columbia", "capital": "Washington", "address": "100 Constitution Ave NW, Washington, DC 20001", "latitude": 38.907, "longitude": -77.037}
+]
+
+with open('capitals_with_coords.json', 'w') as f:
+    json.dump(capitals, f, indent=2)
+
+print("capitals_with_coords.json created with 51 entries (50 states + DC)")
+print("Total entries:", len(capitals))
